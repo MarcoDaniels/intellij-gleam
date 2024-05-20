@@ -1,0 +1,49 @@
+{
+  parserClass="intellij.gleam.gen.GleamParser"
+  parserUtilClass="intellij.gleam.gen.GleamParserUtil"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Gleam"
+  psiImplClassSuffix="Impl"
+  psiPackage="org.intellij.plugins.gleam.gen.lang"
+  psiImplPackage="org.intellij.plugins.gleam.gen.lang.impl"
+
+  elementTypeHolderClass="intellij.gleam.gen.lang.GleamTypes"
+  elementTypeClass="intellij.gleam.lang.GleamElementType"
+  tokenTypeClass="intellij.gleam.lang.GleamTokenType"
+
+  tokens = [
+    LET='let'
+
+    EQUAL='='
+    COLON=':'
+    ARROW='->'
+    COMMA=','
+    DOT='.'
+    UNDERSCORE='_'
+    LEFT_PARENTHESIS='('
+    RIGHT_PARENTHESIS=')'
+    LEFT_BRACKET='{'
+    RIGHT_BRACKET='}'
+    LEFT_ARRAY_BRACKET='['
+    RIGHT_ARRAY_BRACKET=']'
+
+    TERM='regexp:[A-Za-z]*'
+    STRING_VALUE="regexp:(\")[^\r\n]*(\")"
+    MULTILINE_STRING_VALUE="regexp:('')(.|\n)*('')"
+    NUMBER_VALUE="regexp:(\d*\.)?\d+"
+
+    LINE_COMMENT='regexp:(--)[^\r\n]*'
+    BLOCK_COMMENT='regexp:(\{-)(.|\n)*(-})'
+
+    // needed for bnf preview to work
+    WHITE_SPACE='regexp:[\s\r\n]*'
+  ]
+}
+
+root ::= !<<eof>> body
+
+body ::= (comments)
+
+comments ::= (BLOCK_COMMENT|LINE_COMMENT)

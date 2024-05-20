@@ -1,0 +1,45 @@
+<idea-plugin>
+    <id>org.intellij.plugins.gleam</id>
+    <name>Gleam</name>
+    <version>0.0.1</version>
+    <vendor url="https://github.com/MarcoDaniels">Marco Daniel Martins</vendor>
+
+    <description>Language support for the Gleam Programing Language</description>
+
+    <!-- TODO: update build -->
+    <idea-version since-build="233.14015.106"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.ultimate</depends>
+    <depends>com.intellij.properties</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType name="Gleam Module" implementationClass="intellij.gleam.file.GleamFileType"
+                  language="Gleam" extensions="gleam"/>
+
+        <!--
+        <lang.parserDefinition language="Gleam" implementationClass="org.intellij.plugins.gleam.lang.GleamParserDefinition"/>
+        -->
+
+        <projectService serviceInterface="intellij.gleam.settings.GleamSettings"
+                        serviceImplementation="intellij.gleam.settings.GleamSettings"/>
+
+        <projectConfigurable
+                parentId="language"
+                id="intellij.gleam"
+                displayName="Gleam"
+                instance="intellij.gleam.settings.GleamSettingsConfigurable"/>
+
+        <!-- LSP only works on ultimate version -->
+        <platform.lsp.serverSupportProvider implementation="intellij.gleam.lsp.GleamLSPServerProvider"/>
+    </extensions>
+
+    <actions>
+        <action id="intellij.gleam.actions.CreateGleamModule"
+                class="intellij.gleam.actions.CreateGleamModule" text="Gleam Module"
+                description="Create new Gleam module">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+        </action>
+    </actions>
+
+</idea-plugin>
