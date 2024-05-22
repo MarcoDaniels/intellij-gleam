@@ -17,6 +17,12 @@
         <fileType name="Gleam Module" implementationClass="intellij.gleam.file.GleamFileType"
                   language="Gleam" extensions="gleam"/>
 
+        <lang.syntaxHighlighterFactory
+                language="Gleam"
+                implementationClass="intellij.gleam.highlight.GleamSyntaxHighlighterFactory"/>
+
+        <colorSettingsPage implementation="intellij.gleam.highlight.GleamColorSettingsPage"/>
+
         <!--
         <lang.parserDefinition language="Gleam" implementationClass="org.intellij.plugins.gleam.lang.GleamParserDefinition"/>
         -->

@@ -4,6 +4,10 @@ import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.ProjectWideLspServerDescriptor
+import com.intellij.platform.lsp.api.customization.{
+  LspCommandsSupport,
+  LspCompletionSupport
+}
 import intellij.gleam.module.{gleamExtension, gleamName}
 
 class GleamLSPServerDescriptor(project: Project, executable: String)
@@ -13,4 +17,11 @@ class GleamLSPServerDescriptor(project: Project, executable: String)
 
   override def isSupportedFile(virtualFile: VirtualFile): Boolean =
     virtualFile.getExtension == gleamExtension
+
+  override def getLspGoToDefinitionSupport(): Boolean = true
+
+  override def getLspCompletionSupport: LspCompletionSupport =
+    super.getLspCompletionSupport
+
+  override def getLspHoverSupport(): Boolean = true
 }
