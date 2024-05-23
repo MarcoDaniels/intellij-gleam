@@ -26,9 +26,9 @@ EOL=\R
 WHITE_SPACE=\s+
 
 NUMBER_VALUE=[0-9]+(\.[0-9]*)?
+STRING_VALUE=('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")
 LOWER_CASE_TERM=[:lowercase:][a-zA-Z_0-9]*
 UPPER_CASE_TERM=[:uppercase:][a-zA-Z_0-9]*
-STRING_VALUE=('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")
 LINE_COMMENT=("//")[^\r\n]*
 WHITE_SPACE=[\s\r\n]*
 
@@ -62,9 +62,9 @@ WHITE_SPACE=[\s\r\n]*
   "]"                     { return RIGHT_ARRAY_BRACKET; }
 
   {NUMBER_VALUE}          { return NUMBER_VALUE; }
+  {STRING_VALUE}          { return STRING_VALUE; }
   {LOWER_CASE_TERM}       { return LOWER_CASE_TERM; }
   {UPPER_CASE_TERM}       { return UPPER_CASE_TERM; }
-  {STRING_VALUE}          { return STRING_VALUE; }
   {LINE_COMMENT}          { return LINE_COMMENT; }
   {WHITE_SPACE}           { return WHITE_SPACE; }
 

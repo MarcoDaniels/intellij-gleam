@@ -37,7 +37,6 @@ object GleamSyntaxHighlighter {
 
   val OPERATION: TextAttributesKey = createTextAttributesKey(
     "GLEAM_OPERATION",
-    // TODO: operation color
     DefaultLanguageHighlighterColors.NUMBER
   )
 
@@ -58,17 +57,22 @@ class GleamSyntaxHighlighter extends SyntaxHighlighterBase {
       case GleamTypes.IMPORT | GleamTypes.PUB | GleamTypes.FN |
           GleamTypes.TYPE | GleamTypes.CASE | GleamTypes.USE | GleamTypes.LET =>
         GleamSyntaxHighlighter.KEYWORDS
+
       case GleamTypes.LEFT_BRACKET | GleamTypes.RIGHT_BRACKET |
           GleamTypes.LEFT_ARRAY_BRACKET | GleamTypes.RIGHT_ARRAY_BRACKET |
           GleamTypes.LEFT_PARENTHESIS | GleamTypes.RIGHT_PARENTHESIS =>
         GleamSyntaxHighlighter.BRACKETS
-      case GleamTypes.LEFT_ARROW | GleamTypes.RIGHT_ARROW |
-          GleamTypes.UNDERSCORE | GleamTypes.CONCAT | GleamTypes.PIPE =>
+
+      case GleamTypes.LEFT_ARROW | GleamTypes.RIGHT_ARROW | GleamTypes.CONCAT |
+          GleamTypes.PIPE =>
         GleamSyntaxHighlighter.OPERATION
-      case GleamTypes.UPPER_CASE_TERM => GleamSyntaxHighlighter.TYPE_DEFINITION
-      case GleamTypes.NUMBER_VALUE    => GleamSyntaxHighlighter.NUMBER
-      case GleamTypes.STRING_VALUE    => GleamSyntaxHighlighter.STRING
-      case GleamTypes.LINE_COMMENT    => GleamSyntaxHighlighter.COMMENT
-      case _                          => createTextAttributesKey("")
+
+      case GleamTypes.UPPER_CASE_TERM | GleamTypes.TUPLE =>
+        GleamSyntaxHighlighter.TYPE_DEFINITION
+
+      case GleamTypes.NUMBER_VALUE => GleamSyntaxHighlighter.NUMBER
+      case GleamTypes.STRING_VALUE => GleamSyntaxHighlighter.STRING
+      case GleamTypes.LINE_COMMENT => GleamSyntaxHighlighter.COMMENT
+      case _                       => createTextAttributesKey("")
     })
 }

@@ -41,11 +41,10 @@
     RIGHT_ARRAY_BRACKET=']'
 
     NUMBER_VALUE='regexp:\d+(\.\d*)?'
+    STRING_VALUE="regexp:('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")"
 
     LOWER_CASE_TERM='regexp:\p{Lower}\w*'
     UPPER_CASE_TERM='regexp:\p{Upper}\w*'
-
-    STRING_VALUE="regexp:('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")"
 
     LINE_COMMENT='regexp:(//)[^\r\n]*'
 
@@ -54,6 +53,7 @@
   ]
 }
 
+// TODO: BNF only for highlight?!
 root ::= !<<eof>> (NUMBER_VALUE|expr_import|expr_function)*
 
 expr_import ::= IMPORT <<slash_separated LOWER_CASE_TERM>> import_deconstruct*

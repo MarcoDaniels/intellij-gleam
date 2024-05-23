@@ -4,10 +4,7 @@ import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.ProjectWideLspServerDescriptor
-import com.intellij.platform.lsp.api.customization.{
-  LspCommandsSupport,
-  LspCompletionSupport
-}
+import com.intellij.platform.lsp.api.customization.LspCompletionSupport
 import intellij.gleam.module.{gleamExtension, gleamName}
 
 class GleamLSPServerDescriptor(project: Project, executable: String)

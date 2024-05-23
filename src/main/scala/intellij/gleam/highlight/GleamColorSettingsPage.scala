@@ -19,11 +19,11 @@ private object GleamColorSettingsPage {
   private val DESCRIPTORS = Array[AttributesDescriptor](
     new AttributesDescriptor("Keyword", GleamSyntaxHighlighter.KEYWORDS),
     new AttributesDescriptor("Types", GleamSyntaxHighlighter.TYPE_DEFINITION),
-    new AttributesDescriptor("Operation", GleamSyntaxHighlighter.OPERATION),
+    new AttributesDescriptor("Brackets", GleamSyntaxHighlighter.BRACKETS),
     new AttributesDescriptor("String", GleamSyntaxHighlighter.STRING),
     new AttributesDescriptor("Number", GleamSyntaxHighlighter.NUMBER),
-    new AttributesDescriptor("Comment", GleamSyntaxHighlighter.COMMENT),
-    new AttributesDescriptor("Brackets", GleamSyntaxHighlighter.BRACKETS)
+    new AttributesDescriptor("Operation", GleamSyntaxHighlighter.OPERATION),
+    new AttributesDescriptor("Comment", GleamSyntaxHighlighter.COMMENT)
   )
 }
 
@@ -35,15 +35,27 @@ class GleamColorSettingsPage extends ColorSettingsPage {
   override def getDemoText: String =
     s"""
        |import gleam/io
+       |import lib.{type Greeting, callback}
        |
        |// main function
        |pub fn main() {
-       |  io.println("hello" <> "friend!")
-       |  io.println(200)
+       |  let calc = 1 + 2 * 4 - 2 / 9
+       |  let hi: Greeting = "hello" <> "friend"
+       |
+       |  let callable =
+       |    hi |> callback
+       |
+       |  let result = case callable {
+       |    Ok(val) -> "ok:" <> val
+       |    Error(Nil) -> "not ok"
+       |  }
+       |
+       |  io.println(result)
        |}
        |
        |type User {
-       |  User(name: String)
+       |  Person(name: String)
+       |  Robot(number: Int)
        |}
        |""".stripMargin
 
