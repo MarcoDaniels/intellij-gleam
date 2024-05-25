@@ -1,11 +1,11 @@
-package intellij.gleam.lsp
+package main.scala.intellij.gleam.lsp
 
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.ProjectWideLspServerDescriptor
 import com.intellij.platform.lsp.api.customization.LspCompletionSupport
-import intellij.gleam.module.{gleamExtension, gleamName}
+import main.scala.intellij.gleam.GleamConstants.{gleamExtension, gleamName}
 
 class GleamLSPServerDescriptor(project: Project, executable: String)
     extends ProjectWideLspServerDescriptor(project, gleamName) {

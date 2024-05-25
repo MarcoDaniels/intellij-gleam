@@ -1,11 +1,11 @@
-package intellij.gleam.lang;
+package main.java.intellij.gleam;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
 
 import static com.intellij.psi.TokenType.BAD_CHARACTER;
 import static com.intellij.psi.TokenType.WHITE_SPACE;
-import static intellij.gleam.gen.lang.GleamTypes.*;
+import static main.java.intellij.gleam.GleamTypes.*;
 
 %%
 
@@ -30,7 +30,6 @@ STRING_VALUE=('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")
 LOWER_CASE_TERM=[:lowercase:][a-zA-Z_0-9]*
 UPPER_CASE_TERM=[:uppercase:][a-zA-Z_0-9]*
 LINE_COMMENT=("//")[^\r\n]*
-WHITE_SPACE=[\s\r\n]*
 
 %%
 <YYINITIAL> {
@@ -43,17 +42,11 @@ WHITE_SPACE=[\s\r\n]*
   "use"                   { return USE; }
   "case"                  { return CASE; }
   "type"                  { return TYPE; }
-  "->"                    { return RIGHT_ARROW; }
-  "<-"                    { return LEFT_ARROW; }
   "<>"                    { return CONCAT; }
   "|>"                    { return PIPE; }
   "#"                     { return TUPLE; }
-  "/"                     { return SLASH; }
-  "="                     { return EQUAL; }
-  ":"                     { return COLON; }
-  ","                     { return COMMA; }
-  "."                     { return DOT; }
-  "_"                     { return UNDERSCORE; }
+  "<-"                    { return LEFT_ARROW; }
+  "->"                    { return RIGHT_ARROW; }
   "("                     { return LEFT_PARENTHESIS; }
   ")"                     { return RIGHT_PARENTHESIS; }
   "{"                     { return LEFT_BRACKET; }
@@ -66,7 +59,6 @@ WHITE_SPACE=[\s\r\n]*
   {LOWER_CASE_TERM}       { return LOWER_CASE_TERM; }
   {UPPER_CASE_TERM}       { return UPPER_CASE_TERM; }
   {LINE_COMMENT}          { return LINE_COMMENT; }
-  {WHITE_SPACE}           { return WHITE_SPACE; }
 
 }
 

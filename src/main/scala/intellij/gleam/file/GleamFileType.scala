@@ -1,8 +1,12 @@
-package intellij.gleam.file
+package main.scala.intellij.gleam.file
 
 import com.intellij.openapi.fileTypes.LanguageFileType
-import intellij.gleam.lang.GleamLanguage
-import intellij.gleam.module.{gleamExtension, gleamModule, gleamModuleDescription}
+import main.scala.intellij.gleam.GleamConstants.{
+  gleamExtension,
+  gleamModule,
+  gleamModuleDescription
+}
+import main.scala.intellij.gleam.lang.GleamLanguage
 
 import javax.swing.Icon
 

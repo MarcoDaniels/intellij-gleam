@@ -1,17 +1,7 @@
+// BNF only used to generate types & lexer for highlight
 {
-  parserClass="intellij.gleam.gen.GleamParser"
-  parserUtilClass="intellij.gleam.gen.GleamParserUtil"
-
-  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
-
-  psiClassPrefix="Gleam"
-  psiImplClassSuffix="Impl"
-  psiPackage="org.intellij.plugins.gleam.gen.lang"
-  psiImplPackage="org.intellij.plugins.gleam.gen.lang.impl"
-
-  elementTypeHolderClass="intellij.gleam.gen.lang.GleamTypes"
-  elementTypeClass="intellij.gleam.lang.GleamElementType"
-  tokenTypeClass="intellij.gleam.lang.GleamTokenType"
+  elementTypeHolderClass="main.java.intellij.gleam.GleamTypes"
+  tokenTypeClass="main.scala.intellij.gleam.lang.GleamTokenType"
 
   tokens = [
     IMPORT='import'
@@ -22,17 +12,12 @@
     CASE='case'
     TYPE='type'
 
-    RIGHT_ARROW='->'
-    LEFT_ARROW='<-'
     CONCAT='<>'
     PIPE='|>'
     TUPLE="#"
-    SLASH='/'
-    EQUAL='='
-    COLON=':'
-    COMMA=','
-    DOT='.'
-    UNDERSCORE='_'
+    LEFT_ARROW='<-'
+    RIGHT_ARROW='->'
+
     LEFT_PARENTHESIS='('
     RIGHT_PARENTHESIS=')'
     LEFT_BRACKET='{'
@@ -47,23 +32,7 @@
     UPPER_CASE_TERM='regexp:\p{Upper}\w*'
 
     LINE_COMMENT='regexp:(//)[^\r\n]*'
-
-    // needed for bnf preview to work
-    WHITE_SPACE='regexp:[\s\r\n]*'
   ]
 }
 
-// TODO: BNF only for highlight?!
-root ::= !<<eof>> (NUMBER_VALUE|expr_import|expr_function)*
-
-expr_import ::= IMPORT <<slash_separated LOWER_CASE_TERM>> import_deconstruct*
-
-import_deconstruct ::= (DOT LEFT_BRACKET (<<comma_separated(TYPE UPPER_CASE_TERM)>>) RIGHT_BRACKET)
-
-expr_function ::= PUB* FN LOWER_CASE_TERM LEFT_PARENTHESIS <<comma_separated type_value>> RIGHT_PARENTHESIS RIGHT_ARROW UPPER_CASE_TERM
-
-type_value ::= LOWER_CASE_TERM COLON (UPPER_CASE_TERM|LOWER_CASE_TERM DOT UPPER_CASE_TERM)
-
-private meta comma_separated ::= <<v>>(COMMA<<v>>)*
-
-private meta slash_separated ::= <<v>>(SLASH<<v>>)*
+root ::= !<<eof>>

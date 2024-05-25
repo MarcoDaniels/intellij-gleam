@@ -1,4 +1,4 @@
-package intellij.gleam.settings
+package main.scala.intellij.gleam.settings
 
 import com.intellij.openapi.components.State.NameGetter
 import com.intellij.openapi.components.{

@@ -1,9 +1,9 @@
-package intellij.gleam.file
+package main.scala.intellij.gleam.file
 
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.psi.FileViewProvider
-import intellij.gleam.lang.GleamLanguage
-import intellij.gleam.module.gleamModule
+import main.scala.intellij.gleam.GleamConstants.gleamModule
+import main.scala.intellij.gleam.lang.GleamLanguage
 
 import javax.swing.Icon
 

@@ -1,4 +1,4 @@
-package intellij.gleam.highlight
+package main.scala.intellij.gleam.highlight
 
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
@@ -6,8 +6,8 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
-import intellij.gleam.gen.lang.GleamTypes
-import intellij.gleam.lang.GleamLexerAdapter
+import main.scala.intellij.gleam.lang.GleamLexerAdapter
+import main.java.intellij.gleam.GleamTypes._
 
 object GleamSyntaxHighlighter {
   val KEYWORDS: TextAttributesKey = createTextAttributesKey(
@@ -54,25 +54,22 @@ class GleamSyntaxHighlighter extends SyntaxHighlighterBase {
       tokenType: IElementType
   ): Array[TextAttributesKey] =
     Array(tokenType match {
-      case GleamTypes.IMPORT | GleamTypes.PUB | GleamTypes.FN |
-          GleamTypes.TYPE | GleamTypes.CASE | GleamTypes.USE | GleamTypes.LET =>
+      case IMPORT | PUB | FN | TYPE | CASE | USE | LET =>
         GleamSyntaxHighlighter.KEYWORDS
 
-      case GleamTypes.LEFT_BRACKET | GleamTypes.RIGHT_BRACKET |
-          GleamTypes.LEFT_ARRAY_BRACKET | GleamTypes.RIGHT_ARRAY_BRACKET |
-          GleamTypes.LEFT_PARENTHESIS | GleamTypes.RIGHT_PARENTHESIS =>
+      case LEFT_BRACKET | RIGHT_BRACKET | LEFT_ARRAY_BRACKET |
+          RIGHT_ARRAY_BRACKET | LEFT_PARENTHESIS | RIGHT_PARENTHESIS =>
         GleamSyntaxHighlighter.BRACKETS
 
-      case GleamTypes.LEFT_ARROW | GleamTypes.RIGHT_ARROW | GleamTypes.CONCAT |
-          GleamTypes.PIPE =>
+      case LEFT_ARROW | RIGHT_ARROW | CONCAT | PIPE =>
         GleamSyntaxHighlighter.OPERATION
 
-      case GleamTypes.UPPER_CASE_TERM | GleamTypes.TUPLE =>
+      case UPPER_CASE_TERM | TUPLE =>
         GleamSyntaxHighlighter.TYPE_DEFINITION
 
-      case GleamTypes.NUMBER_VALUE => GleamSyntaxHighlighter.NUMBER
-      case GleamTypes.STRING_VALUE => GleamSyntaxHighlighter.STRING
-      case GleamTypes.LINE_COMMENT => GleamSyntaxHighlighter.COMMENT
-      case _                       => createTextAttributesKey("")
+      case NUMBER_VALUE => GleamSyntaxHighlighter.NUMBER
+      case STRING_VALUE => GleamSyntaxHighlighter.STRING
+      case LINE_COMMENT => GleamSyntaxHighlighter.COMMENT
+      case _            => createTextAttributesKey("")
     })
 }

@@ -1,4 +1,4 @@
-package intellij.gleam.highlight
+package main.scala.intellij.gleam.highlight
 
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
@@ -8,8 +8,8 @@ import com.intellij.openapi.options.colors.{
   ColorDescriptor,
   ColorSettingsPage
 }
-import intellij.gleam.file.GleamIcon
-import intellij.gleam.module.gleamName
+import main.scala.intellij.gleam.GleamConstants.gleamName
+import main.scala.intellij.gleam.file.GleamIcon
 
 import java.util
 import javax.swing.Icon

@@ -1,4 +1,4 @@
-package intellij.gleam.highlight
+package main.scala.intellij.gleam.highlight
 
 import com.intellij.openapi.fileTypes.{
   SyntaxHighlighter,

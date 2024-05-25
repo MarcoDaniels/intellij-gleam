@@ -1,4 +1,4 @@
-package intellij.gleam.lang
+package main.scala.intellij.gleam.lang
 
 import com.intellij.psi.tree.IElementType
 

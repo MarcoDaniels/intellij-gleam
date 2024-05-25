@@ -1,6 +1,6 @@
-package intellij.gleam.lang
+package main.scala.intellij.gleam.lang
 
 import com.intellij.lang.Language
-import intellij.gleam.module.gleamName
+import main.scala.intellij.gleam.GleamConstants.gleamName
 
 object GleamLanguage extends Language(gleamName)

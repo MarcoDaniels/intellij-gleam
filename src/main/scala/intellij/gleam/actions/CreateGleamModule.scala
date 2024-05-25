@@ -1,12 +1,15 @@
-package intellij.gleam.actions
+package main.scala.intellij.gleam.actions
 
-import com.intellij.ide.actions.{CreateFileFromTemplateAction, CreateFileFromTemplateDialog}
+import com.intellij.ide.actions.{
+  CreateFileFromTemplateAction,
+  CreateFileFromTemplateDialog
+}
 import com.intellij.openapi.project.{DumbAware, Project}
 import com.intellij.openapi.ui.InputValidatorEx
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.psi.PsiDirectory
-import intellij.gleam.file.GleamIcon
-import intellij.gleam.module.gleamModule
+import main.scala.intellij.gleam.GleamConstants.gleamModule
+import main.scala.intellij.gleam.file.GleamIcon
 
 class CreateGleamModule
     extends CreateFileFromTemplateAction(gleamModule, "", GleamIcon.file)
@@ -25,7 +28,7 @@ class CreateGleamModule
   ): Unit =
     builder
       .setTitle(gleamModule)
-      .addKind("Gleam file", GleamIcon.file, gleamModule)
+      .addKind(gleamModule, GleamIcon.file, gleamModule)
       .setValidator(new InputValidatorEx {
         override def checkInput(inputString: String): Boolean =
           true

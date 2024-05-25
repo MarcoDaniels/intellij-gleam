@@ -1,4 +1,4 @@
-package intellij.gleam.file
+package main.scala.intellij.gleam.file
 
 import com.intellij.openapi.util.IconLoader
 

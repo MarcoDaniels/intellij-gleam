@@ -1,4 +1,4 @@
-package intellij.gleam.settings
+package main.scala.intellij.gleam.settings
 
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
