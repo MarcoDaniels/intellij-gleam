@@ -36,6 +36,9 @@
                              instance="main.scala.intellij.gleam.settings.GleamSettingsConfigurable"/>
 
         <platform.lsp.serverSupportProvider implementation="main.scala.intellij.gleam.lsp.GleamLSPServerProvider"/>
+
+        <editorNotificationProvider
+                implementation="main.scala.intellij.gleam.notification.GleamSetupExecutable"/>
     </extensions>
 
     <actions>
