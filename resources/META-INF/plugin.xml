@@ -1,10 +1,12 @@
 <idea-plugin>
-    <id>org.intellij.plugins.gleam</id>
+    <id>intellij.gleam</id>
     <name>Gleam</name>
     <version>0.0.1</version>
     <vendor url="https://github.com/MarcoDaniels">Marco Daniels</vendor>
 
-    <description>Language support for the Gleam Programing Language</description>
+    <description><![CDATA[
+        <p>Language support for the Gleam Programing Language</p>
+    ]]></description>
 
     <idea-version since-build="233.14015.106"/>
 
@@ -12,7 +14,7 @@
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.properties</depends>
     <!-- LSP only works on ultimate version -->
-    <depends>com.intellij.modules.ultimate</depends>
+    <depends optional="true">com.intellij.modules.ultimate</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="Gleam Module" language="Gleam" extensions="gleam"

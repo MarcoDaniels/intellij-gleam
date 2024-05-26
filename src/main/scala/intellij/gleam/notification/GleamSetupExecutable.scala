@@ -16,8 +16,12 @@ class GleamSetupExecutable extends EditorNotificationProvider {
       file: VirtualFile
   ): function.Function[_ >: FileEditor, _ <: JComponent] =
     Gleam(project, file) match {
-      case Some(gleam) => (_: FileEditor) => createPanel(gleam.project)
-      case None        => null
+      case Some(gleam) =>
+        gleam.executable match {
+          case Some(_) => null
+          case None    => (_: FileEditor) => createPanel(gleam.project)
+        }
+      case None => null
     }
 
   private def createPanel(project: Project) = {
