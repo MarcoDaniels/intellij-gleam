@@ -18,8 +18,5 @@ lazy val gleam =
       Global / javacOptions ++= Seq("-source", "17", "-target", "17"),
       Global / scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked"),
       intellijPlugins += "com.intellij.properties".toPlugin,
-      packageLibraryMappings := Seq.empty,
-      patchPluginXml := pluginXmlOptions { xml =>
-        xml.version = version.value
-      }
+      packageLibraryMappings := Seq.empty
     )

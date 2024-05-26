@@ -24,11 +24,6 @@
                 language="Gleam"
                 implementationClass="main.scala.intellij.gleam.highlight.GleamSyntaxHighlighterFactory"/>
 
-        <!-- TODO: build does not pick up extra attributes
-        <additionalTextAttributes scheme="Dark" file="colorSchemes/GleamDefault.xml"/>
-        <additionalTextAttributes scheme="Darcula" file="colorSchemes/GleamDarcula.xml"/>
-        -->
-
         <colorSettingsPage implementation="main.scala.intellij.gleam.highlight.GleamColorSettingsPage"/>
 
         <projectService serviceInterface="main.scala.intellij.gleam.settings.GleamSettings"

@@ -2,6 +2,7 @@ package main.scala.intellij.gleam.highlight
 
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
+import com.intellij.openapi.editor.HighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
@@ -37,7 +38,7 @@ object GleamSyntaxHighlighter {
 
   val OPERATION: TextAttributesKey = createTextAttributesKey(
     "GLEAM_OPERATION",
-    DefaultLanguageHighlighterColors.NUMBER
+    DefaultLanguageHighlighterColors.STATIC_FIELD
   )
 
   val COMMENT: TextAttributesKey = createTextAttributesKey(
