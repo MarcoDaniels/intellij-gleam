@@ -5,8 +5,7 @@ import com.intellij.openapi.fileEditor.FileEditor
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.{EditorNotificationPanel, EditorNotificationProvider}
-import main.scala.intellij.gleam.GleamConstants.gleamExtension
-import main.scala.intellij.gleam.settings.GleamSettings
+import main.scala.intellij.gleam.Gleam
 
 import java.util.function
 import javax.swing.JComponent
@@ -15,15 +14,11 @@ class GleamSetupExecutable extends EditorNotificationProvider {
   override def collectNotificationData(
       project: Project,
       file: VirtualFile
-  ): function.Function[_ >: FileEditor, _ <: JComponent] = {
-    val isGleam = file.getExtension == gleamExtension
-    val settings = GleamSettings.getInstance(project)
-    if (isGleam && settings.executable == "") { (_: FileEditor) =>
-      createPanel(project)
-    } else {
-      null
+  ): function.Function[_ >: FileEditor, _ <: JComponent] =
+    Gleam(project, file) match {
+      case Some(gleam) => (_: FileEditor) => createPanel(gleam.project)
+      case None        => null
     }
-  }
 
   private def createPanel(project: Project) = {
     val panel = new EditorNotificationPanel(
